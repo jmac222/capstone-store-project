@@ -4,7 +4,7 @@
 
 - name*
     - String
-    -req
+    - req
 
 - price
     -number
