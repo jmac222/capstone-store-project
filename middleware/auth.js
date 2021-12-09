@@ -1,24 +1,23 @@
-const jwt = require("jsonwebtoken");
-const { UnauthError } = require("../errors");
 require("dotenv").config();
-const authMiddleware = (req, res, next) => {
-  const authHeader = req.headers.authorization;
 
-  if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    throw new UnauthError("No Token Provided");
-  }
+const jwt = require("jsonwebtoken");
+const { UnauthError } = require("../error");
 
-  const token = authHeader.split(" ")[1];
-  console.log(authHeader);
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const { id, username } = decoded;
-    req.user = {id,username}
-    next()
-  } catch (err) {
-      throw new UnauthError('Not authorized to access this route')  
+const authError = (req, res, next) => {
+    const authHeader = req.headers.authorization;
+    if (!authHeader || !authHeader.startsWith("Bearer")) {
+        throw new UnauthError("Not authorized to access this part of the site.");
+    }
+
+    const token = authHeader.split(" ")[1];
+    console.log(authHeader)
+    try {
+        const payload = jwt.verify(token, process.env.JWT_SECRET);
+        req.user = { userID: payload.userID, name: payload.name };
+        next();
+    } catch (err) {
+        throw new UnauthError("Authorization invalid");
     }
 };
 
-
-module.exports = authMiddleware;
+module.exports = authError;
