@@ -12,7 +12,6 @@ const uploadRouter = require('./routes/uploadRouter')
 const notFoundError = require("./middleware/not-found");
 const errorHandlerMiddleware = require("./middleware/error-handler");
 
-const port = process.env.PORT || 3000;
 const cloudinary = require('cloudinary')
 
 cloudinary.config({ 
@@ -20,11 +19,7 @@ cloudinary.config({
     api_key: process.env.api_key, 
     api_secret: process.env.api_secret 
   });
-// cloudinary.config({ 
-//   cloud_name: 'doqjigmo3', 
-//   api_key: '867629679516259', 
-//   api_secret: 'wdj-GYVMplGyik3tDFHlhv_wyJs' 
-// });
+
 app.use(express.json());
 
 app.use(express.static("./public"));
@@ -38,12 +33,15 @@ app.use('/api/v1/upload', uploadRouter)
 app.use(notFoundError);
 // app.use(errorHandlerMiddleware);
 
+const port = process.env.PORT || 3000;
 const start = async () => {
-  try {
-    await connectDB(process.env.MONGO_URL);
-    app.listen(port, console.log("listening at"));
-  } catch (error) {
-    console.log(error);
-  }
+    try {
+        connectDB(process.env.MONGO_URL);
+        app.listen(3000, () => {
+            console.log(`Server listening at ${port}`);
+        });
+    } catch (err) {
+        console.log(err);
+    }
 };
 start();
