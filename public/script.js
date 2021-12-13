@@ -16,7 +16,7 @@ fileForm.addEventListener('submit', async (e) => {
         const product = {name: nameValue, price: priceValue, image: imageValue}
         console.log(product);
 
-        await axios.post(`${url}/products`, product)
+        await axios.post(`${url}/upload`, product)
         fetchProducts();
     } catch (error) {
         
@@ -38,6 +38,7 @@ imageInput.addEventListener("change", async (e) => {
         "Content-Type": "multipart/form-data",
       },
     });
+    console.log(src);
     imageValue = src;
   } catch (err) {
     imageValue = null;
@@ -49,7 +50,9 @@ async function fetchProducts() {
   try {
     const {
       data: { products }
-    } = await axios.get(`${url}/cart`);
+      
+    } = await axios.get(`${url}/upload`);
+    
     const tempProducts = products.map(each => {
       return `<article class="product">
       <img src="${each.image}" alt="${each.name}" class="img" />

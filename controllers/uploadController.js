@@ -10,6 +10,9 @@ const uploadProductImage = async (req,res) => {
       folder: "file-upload",
     }
   );
+
+  fs.unlinkSync(req.files.image.tempFilePath)
+ res.status(200).json({image: {src: response.secure_url}})
 }
 
 const addProduct = async (req,res) => {
