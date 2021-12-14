@@ -1,7 +1,13 @@
 const Product = require("../models/Product")
 
 const updateProducts = async (req,res) => {
-    res.send("Update the shop")
+   
+    const {id, quantity} = req.body
+    console.log(id, quantity);
+    
+    const output = await Product.findByIdAndUpdate(id, {quantity: quantity})
+    console.log(output);
+    res.json({output})
 }
 
 const getAllCart = async (req,res) => {
