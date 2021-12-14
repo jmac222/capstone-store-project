@@ -1,5 +1,5 @@
-
-
+ 
+ 
 const url = "/api/v1";
 const container = document.querySelector(".container");
 const quant = document.querySelector("#quant")
@@ -20,9 +20,9 @@ async function fetchProducts() {
   try {
     const {
       data: { products }
-      
+     
     } = await axios.get(`${url}/upload`);
-    
+   
     const tempProducts = products.map(each => {
       
       return `<article class="product">
@@ -41,5 +41,5 @@ async function fetchProducts() {
    console.log(error);
   }
 }
-
+ 
 fetchProducts();
