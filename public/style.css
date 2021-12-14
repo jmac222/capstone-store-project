@@ -45,7 +45,6 @@ html {
   justify-content: center;
 }
 
-
 .product {
   display: flex;
   background: #cbd5e1;
@@ -55,10 +54,6 @@ html {
   border-radius: 6px;
   flex-direction: column;
   width: 100%;
-}
-
-.img {
-  padding: 5px;
 }
 
 /* Container Styles */
@@ -74,6 +69,7 @@ html {
 .container img {
   height: 175px;
   border-radius: .25rem;
+  padding: 5px;
 }
 .container footer {
   margin-bottom: 5px;
