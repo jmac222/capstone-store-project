@@ -2,10 +2,10 @@ const Product = require("../models/Product")
 
 const updateProducts = async (req,res) => {
    
-    const {id, quantity} = req.body
-    console.log(id, quantity);
+    const {id, quantity, price} = req.body
+    console.log(id, quantity, price);
     
-    const output = await Product.findByIdAndUpdate(id, {quantity: quantity})
+    const output = await Product.findByIdAndUpdate(id, {quantity: quantity, price: price})
     console.log(output);
     res.json({output})
 }

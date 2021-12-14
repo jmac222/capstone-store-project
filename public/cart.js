@@ -6,23 +6,26 @@ const container = document.querySelector(".container");
 
 
 
-async function quantityAdd(id, quant) {
+async function quantityAdd(id, quant, money) {
     try{
         let x = +quant + 1
-        
+        let y = money * x
+        console.log(y);
         // document.location.reload(true)
-       await axios.put(`${url}/upload`, {id: id, quantity: x});
+       await axios.put(`${url}/upload`, {id: id, quantity: x, price: y});
        fetchProducts()
     } catch(error){
       console.log(error);
     }
   }
-  async function quantitySubtract(id, quant) {
+  async function quantitySubtract(id, quant, money) {
     try{
+        console.log(money);
         let x = +quant - 1
-        
+        let y = money / x
+        console.log(y);
         // document.location.reload(true)
-       await axios.put(`${url}/upload`, {id: id, quantity: x});
+       await axios.put(`${url}/upload`, {id: id, quantity: x, price: y});
        fetchProducts()
     } catch(error){
       console.log(error);
@@ -46,9 +49,9 @@ async function fetchProducts() {
         <footer>
         <p>${each.name}</p>
         <span>$${each.price}</span>
-        <button onclick = "quantitySubtract('${each._id}', '${each.quantity}')">-</button>
+        <button onclick = "quantitySubtract('${each._id}', '${each.quantity}', '${each.price}')">-</button>
         <p>${each.quantity}</p>
-        <button onclick = "quantityAdd('${each._id}', '${each.quantity}')">+</button>
+        <button onclick = "quantityAdd('${each._id}', '${each.quantity}', '${each.price}')">+</button>
         </footer>
         </article>`;
         }
