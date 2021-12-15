@@ -8,6 +8,7 @@ async function quantityAdd(id, quant, money) {
     try{
         let x = +quant + 1
         let y = money * x
+        
         console.log(y);
         // document.location.reload(true)
        await axios.put(`${url}/upload`, {id: id, quantity: x, price: y});
@@ -20,10 +21,8 @@ async function quantityAdd(id, quant, money) {
     try{
         console.log(money);
         let x = +quant - 1
-        let y = money / x
-        if (y == money){
-            y = money/ quant
-        }
+        let y = money / (x + 1)
+        
         console.log(y);
         // document.location.reload(true)
        await axios.put(`${url}/upload`, {id: id, quantity: x, price: y});
