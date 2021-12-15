@@ -15,6 +15,7 @@ const productRouter = require('./routes/productsRouter')
 const cartRouter = require('./routes/cartRouter')
 const uploadRouter = require('./routes/uploadRouter')
 const notFoundError = require("./middleware/not-found");
+const stripeController = require("./controllers/stripeController");
 
 // middleware
 // const errorHandlerMiddleware = require("./middleware/error-handler");
@@ -35,6 +36,7 @@ app.get("/", (req, res) => {
 app.use('/api/v1/products', productRouter)
 app.use('/api/v1/cart', cartRouter)
 app.use('/api/v1/upload', uploadRouter)
+app.post('/stripe', stripeController)
 app.use(notFoundError);
 // app.use(errorHandlerMiddleware);
 

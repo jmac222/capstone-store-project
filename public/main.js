@@ -30,7 +30,7 @@ async function fetchProducts() {
       <footer>
       <p>${each.name}</p>
       <span>$${each.price}</span>
-      <button id = "quant" onclick = "quantityAdd('${each._id}')">+${each.quantity}</button>
+      <button id = "quant" onclick = "quantityAdd('${each._id}')">Add to Cart</button>
       </footer>
       </article>`;
       

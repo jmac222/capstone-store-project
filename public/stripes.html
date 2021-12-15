@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stripe</title>
+    
+    <link rel = 'stylesheet' href = 'stripes.css'>
+    <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <div class="container"></div>
+    <section class="section section-center content">
+        <h1>Stripe Payment</h1>
+        <form  id="payment-form">
+            <p>Test Card # 4242 4242 4242 4242</p>
+            <div id="card-element"></div>
+            <button type="submit" id= "submit">
+                <div class="spinner hidden" id="spinner"></div>
+                <span id="button-text">Pay</span>
+            </button>
+            <p id="card-error" role="alert"></p>
+            <p class="result-message hidden">
+                Payment Succeeded
+                <a href = 'https://dashboard.stripe.com/test/dashboard'>stripe dashboard</a>
+            </p>
+        </form>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js" integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src = 'stripes.js'></script>
+</body>
+</html>
