@@ -16,7 +16,7 @@ const sendEmail = async (req,res) => {
         from: 'jmcfar187@west-mec.org',
         
         subject: 'Your Receipt',
-        html: `<h1>Reset Password</h1>`
+        html: `<h1>Reset Password</h1><p> was your payment</p>`
     })
 
     res.json(info)
