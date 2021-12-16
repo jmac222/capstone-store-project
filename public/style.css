@@ -4,10 +4,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Courier New", Courier, monospace;
 }
 
   /* primary: #00ff80; */
+
+  /* body font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&family=Montserrat&display=swap');
 
 /* Basic Styles */
 html {
@@ -17,24 +19,30 @@ html {
   background-size: cover;
 }
 
+body {
+  font-family:  Helvetica, sans-serif;
+}
+
+
+
 /* Navbar Styles */
 .nav {
   display: grid;
   grid-template-columns: auto auto auto;
   grid-template-rows: 100px;
   text-decoration: none;
-  background-color: #100e03bb;
+  background: #100e03bb;
   height: 90px;
   line-height: 90px;
   font-weight: bolder;
   font-size: 37px;
   font-family: 'Staatliches', cursive;
+  letter-spacing: .3rem;
   z-index: 10;
   position: sticky;
   top: 0;
   border-bottom: 3px #00ff80 solid;
 }
-
 .nav a {
   display: flex;
   color: #00ff80;
@@ -42,10 +50,15 @@ html {
   text-align: center;
   justify-content: center;
 }
+.nav a:hover {
+  color: #ffffff;
+  transition: .3s ease-in-out all;
+}
 
 .product {
   display: flex;
-  background: #cbd5e1;
+  background-color: #ffffff;
+  color: #100e03bb;
   padding: .75rem;
   justify-content: center;
   align-items: center;
