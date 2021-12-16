@@ -2,6 +2,9 @@ const nodemailer = require('nodemailer')
 require('dotenv').config()
 
 
+   
+
+
 const sendEmail = async (req,res) => {
     const transporter = nodemailer.createTransport({
         host: 'smtp.ethereal.email',
@@ -16,7 +19,7 @@ const sendEmail = async (req,res) => {
         from: 'jmcfar187@west-mec.org',
         
         subject: 'Your Receipt',
-        html: `<h1>Reset Password</h1><p> was your payment</p>`
+        html: `fetchProducts()`
     })
 
     res.json(info)

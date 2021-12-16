@@ -150,5 +150,3 @@ const loading = function (isLoading) {
   }
 };
 
-
-
