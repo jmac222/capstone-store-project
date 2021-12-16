@@ -1,5 +1,3 @@
-
-
 const url = "/api/v1";
 const container = document.querySelector(".container");
 
