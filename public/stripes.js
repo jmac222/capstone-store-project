@@ -2,8 +2,18 @@
 //   { id: "1", name: "t-shirt", price: 1999 },
 //   { id: "2", name: "shoes", price: 4999 },
 // ];
-
-const total_amount = 10998;
+const url = "/api/v1";
+const receipt = document.querySelector('#submit')
+async function quantityRemove(id) {
+  try{
+    
+    
+     await axios.put(`${url}/upload`, {id: id, quantity: 0});
+  } catch(error){
+    console.log(error);
+  }
+}
+let total_amount = 0;
 async function moneyPrice() {
   try {
     const {
@@ -11,21 +21,31 @@ async function moneyPrice() {
     } = await axios.get(`${url}/upload`);
 
     products.map((each) => {
-      each.price = total_amount;
-      return `${each.price}`
+      if (each.quantity >= 1) {
+        total_amount += each.price;
+        quantityRemove(each._id)
+        return `${each.price}`;
+      }
     });
+    console.log(total_amount);
+    total_amount = total_amount *100
+    start()
+
+    
+
   } catch (error) {
     console.log(error);
   }
 }
 moneyPrice();
 
+
 const shipping_fee = 1099;
 
 var stripe = Stripe(
   "pk_test_51K4A9WCGwkOplFQD3PBpnfla3FqY2UINoPrFr7MYpj9E3mXTNqlKHl4zyZeagJcDYAq6JJaZpc2Huod5OEx13TYh00sUz2RxMB"
 );
-
+const start = () => {
 document.querySelector("button").disabled = true;
 fetch("/stripe", {
   method: "POST",
@@ -73,7 +93,13 @@ fetch("/stripe", {
       payWithCard(stripe, card, data.clientSecret);
     });
   });
+  receipt.addEventListener('click', async (e) => {
+    
+   
+    await axios.get('/email')
+  })
 
+}
 const payWithCard = function (stripe, card, clientSecret) {
   loading(true);
   stripe
@@ -123,3 +149,4 @@ const loading = function (isLoading) {
     document.querySelector("#button-text").classList.remove("hidden");
   }
 };
+
