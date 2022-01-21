@@ -1,6 +1,18 @@
 const nodemailer = require('nodemailer')
 require('dotenv').config()
+const Product = require("../models/Product")
 
+let total = 0;
+async function totalAmt(){
+    const products = await Product.find({});
+    products.map((each) => {
+
+        total += each.price
+    })
+    
+}
+totalAmt();
+console.log(total)
 
 const sendEmail = async (req,res) => {
     const transporter = nodemailer.createTransport({
@@ -16,7 +28,7 @@ const sendEmail = async (req,res) => {
         from: 'jmcfar187@west-mec.org',
         
         subject: 'Your Receipt',
-        html: `<h1>Reset Password</h1>`
+        html: `${total}`
     })
 
     res.json(info)
