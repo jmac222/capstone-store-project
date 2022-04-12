@@ -1,4 +1,14 @@
 {
+
+  
+    "name": "john",
+    "version": "1.0.0",
+    "description": "RC Car Seller",
+    "main": "main.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "nodemon app.js"
+    },
   "dependencies": {
     "bcrypt": "^5.0.1",
     "cloudinary": "^1.27.1",
@@ -14,9 +24,7 @@
     "nodemailer": "^6.7.2",
     "stripe": "^8.193.0"
   },
-  "scripts": {
-    "start": "nodemon app.js"
-  },
+  
   "devDependencies": {
     "nodemon": "^2.0.15"
   }
